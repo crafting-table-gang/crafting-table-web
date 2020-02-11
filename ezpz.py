@@ -133,7 +133,7 @@ def configs():
         return "<script>alert('Please Log In.'); window.location = '/'</script>"
 
 
-@app.route('/cfg-save', methods=['POST'])
+@app.route('/cfg-save', methods=['POST', 'GET'])
 def save_config():
     try:
         discord = OAuth2Session(client_id, token=session['discord_token'])
