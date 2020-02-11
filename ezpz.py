@@ -114,7 +114,10 @@ def configs():
         rtn = f'<h1>Config Manager</h1>' \
               f'<a href="/profile">You may return back to your profile here!</a>' \
               f'<br>' \
-              f'<textbox>{data}</textbox>'
+              f'<form action="/cfg-save" method="post">' \
+              f'<textarea name="data-m">{data}</textarea>' \
+              f'<input type="submit" value="Submit">' \
+              f'</form>'
         return rtn
     except:
         return "<script>alert('Please Log In.'); window.location = '/'</script>"
