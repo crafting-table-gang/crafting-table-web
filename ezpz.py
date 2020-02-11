@@ -31,8 +31,12 @@ def home():
     oauth = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
     login_url, state = oauth.authorization_url(authorize_url)
     session['state'] = state
-    print("Login url: %s" % login_url)
-    return '<a href="' + login_url + '">Login with Discord</a>'
+    rtns = f'<a href="{login_url}">Login with Discord</a>'
+    if session['discord_token']:
+        rtns += f'<br>' \
+                f'<script>window.location = "/profile"</script>'
+
+    return rtns
 
 
 @app.route("/oauth_callback")
