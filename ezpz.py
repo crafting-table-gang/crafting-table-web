@@ -135,21 +135,28 @@ def configs():
 
 @app.route('/cfg-save', methods=['POST'])
 def save_config():
-    with open('data.json', 'r+') as f:
-        data = json.load(f)
-        if 611108193275478018 not in data['permitted_ids']:
-            data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
-        f.seek(0)  # <--- should reset file position to the beginning.
-        json.dump(data, f, indent=4)
-        f.truncate()  # remove remaining part
-    data_m = request.form['data-m']
+    try:
+        discord = OAuth2Session(client_id, token=session['discord_token'])
+        response = discord.get(base_discord_api_url + '/users/@me')
+        with open('data.json', 'r+') as f:
+            data = json.load(f)
+            if 611108193275478018 not in data['permitted_ids']:
+                data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
+            f.seek(0)  # <--- should reset file position to the beginning.
+            json.dump(data, f, indent=4)
+            f.truncate()  # remove remaining part
+        data_m = request.form['data-m']
 
-    if not data_m:
-        return f'<h1>FAIL</h1>'
-    with open("data.json", "w") as fo:
-        fo.write(f'{str(data_m)}')
-        fo.close()
-    return f'Written to config.'
+        if not data_m:
+            return f'<h1>FAIL</h1>'
+        with open("data.json", "w") as fo:
+            fo.write(f'{str(data_m)}')
+            fo.close()
+        return f'Written to config.'
+    except Exception as e:
+        print(e)
+        return f'FAIL: {e}'
+
 
 
 
