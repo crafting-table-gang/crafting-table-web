@@ -1,0 +1,12 @@
+[Unit]
+Description=uWSGI instance to serve ctbot web
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/sammy/myproject
+ExecStart=uwsgi --ini ctbot-web.ini
+
+[Install]
+WantedBy=multi-user.target
