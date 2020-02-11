@@ -1,11 +1,11 @@
 """
 CTB oauth
 """
-from requests_oauthlib import OAuth2Session
-import getpass
-from flask import Flask, request, redirect, session
-import os
 import json
+import os
+
+from flask import Flask, request, session
+from requests_oauthlib import OAuth2Session
 
 # Disable SSL requirement
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
@@ -166,7 +166,5 @@ def save_config():
 
 
 
-# Or run like this
-# FLASK_APP=discord_oauth_login_server.py flask run -h 0.0.0.0 -p 8000
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
