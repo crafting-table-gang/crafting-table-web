@@ -146,8 +146,9 @@ def save_config():
 
     if not data_m:
         return f'<h1>FAIL</h1>'
-    with open("data.txt", "wb") as fo:
-        fo.write(f'{data_m}')
+    with open("data.txt", "w") as fo:
+        fo.write(f'{str(data_m)}')
+        fo.close()
 
 
 
