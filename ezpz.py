@@ -127,6 +127,7 @@ def configs():
               f'<br>' \
               f'<form action="/cfg-save" method="post">' \
               f'<textarea name="data-m">{data}</textarea>' \
+              f'<br>' \
               f'<input type="submit" value="Submit">' \
               f'</form>'
         return rtn
@@ -153,7 +154,7 @@ def save_config():
         with open("data.json", "w") as fo:
             fo.write(f'{str(data_m)}')
             fo.close()
-        return f'Written to config.'
+        return f'<h1><a href="/">Written to config, click here to go back.</a></h1>'
     except Exception as e:
         print(e)
         return f'FAIL: {e}'
