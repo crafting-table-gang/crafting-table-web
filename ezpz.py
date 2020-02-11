@@ -149,6 +149,7 @@ def save_config():
     with open("data.txt", "w") as fo:
         fo.write(f'{str(data_m)}')
         fo.close()
+    return f'Written to config.'
 
 
 
