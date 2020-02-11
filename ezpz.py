@@ -85,8 +85,7 @@ def profile():
               f'<br>' \
               f'<h2>2FA enabled? {response.json()["mfa_enabled"]}</h2>' \
               f'<br>' \
-              f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>' \
-              f''
+              f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
@@ -121,6 +120,8 @@ def configs():
             return f'<script> alert("no."); window.location = "/profile"</script>' \
                    f'<h1>nO</h1>'
         # https://discordapp.com/developers/docs/resources/user#user-object-user-struct
+        data = str(data)
+        data = data.replace('\'', '"')
         rtn = f'<h1>Config Manager</h1>' \
               f'<a href="/profile">You may return back to your profile here!</a>' \
               f'<br>' \
