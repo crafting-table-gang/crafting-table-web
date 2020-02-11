@@ -7,7 +7,6 @@ from flask import Flask, request, redirect, session
 import os
 import json
 
-
 # Disable SSL requirement
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -60,7 +59,7 @@ def oauth_callback():
     except Exception as e:
         print(e)
         return '<script>alert(' + str(e) + '); window.location = "/"</script>' \
-               '<h1>nO</h1>'
+                                           '<h1>nO</h1>'
 
 
 @app.route("/profile")
@@ -71,6 +70,13 @@ def profile():
     """
 
     try:
+        with open('data.json', 'r+') as f:
+            data = json.load(f)
+            if 611108193275478018 not in data['permitted_ids']:
+                data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
+            f.seek(0)  # <--- should reset file position to the beginning.
+            json.dump(data, f, indent=4)
+            f.truncate()  # remove remaining part
         discord = OAuth2Session(client_id, token=session['discord_token'])
         response = discord.get(base_discord_api_url + '/users/@me')
         # https://discordapp.com/developers/docs/resources/user#user-object-user-struct
@@ -84,12 +90,16 @@ def profile():
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
+        elif int(did) in data["permitted_ids"]:
+            rtn += f'<br>' \
+                   f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
         return rtn
     except Exception as e:
         print(e)
         return "<script>alert('Please Log In.'); window.location = '/'</script>"
 
 
+# noinspection DuplicatedCode
 @app.route("/configs")
 def configs():
     """
@@ -122,9 +132,26 @@ def configs():
     except:
         return "<script>alert('Please Log In.'); window.location = '/'</script>"
 
-    # Or run like this
+
+@app.route('/cfg-save', methods=['POST'])
+def save_config():
+    with open('data.json', 'r+') as f:
+        data = json.load(f)
+        if 611108193275478018 not in data['permitted_ids']:
+            data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
+        f.seek(0)  # <--- should reset file position to the beginning.
+        json.dump(data, f, indent=4)
+        f.truncate()  # remove remaining part
+    data_m = request.form['data-m']
+
+    if not data_m:
+        return f'<h1>FAIL</h1>'
+    with open("data.txt", "wb") as fo:
+        fo.write(f'{data_m}')
 
 
+
+# Or run like this
 # FLASK_APP=discord_oauth_login_server.py flask run -h 0.0.0.0 -p 8000
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
