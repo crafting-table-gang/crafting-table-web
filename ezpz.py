@@ -154,7 +154,7 @@ def save_config():
         data_m = request.form['data-m']
 
         if not data_m:
-            return f'<h1>FAIL</h1>'
+            return f'<h1><a href="/configs">FAIL, there must be content for the file!</a></h1>'
         with open("data.json", "w") as fo:
             fo.write(f'{str(data_m)}')
             fo.close()
