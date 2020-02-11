@@ -32,9 +32,12 @@ def home():
     login_url, state = oauth.authorization_url(authorize_url)
     session['state'] = state
     rtns = f'<a href="{login_url}">Login with Discord</a>'
-    if session['discord_token']:
-        rtns += f'<br>' \
-                f'<script>window.location = "/profile"</script>'
+    try:
+        if session['discord_token']:
+            rtns += f'<br>' \
+                    f'<script>window.location = "/profile"</script>'
+    except:
+        print("")
 
     return rtns
 
