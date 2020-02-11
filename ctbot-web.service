@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=root
 Group=root
-WorkingDirectory=/home/sammy/myproject
-ExecStart=uwsgi --ini ctbot-web.ini
+WorkingDirectory=/root/Eppyforce/
+ExecStart=/usr/local/bin/uwsgi --ini ctbot-web.ini
 
 [Install]
 WantedBy=multi-user.target
