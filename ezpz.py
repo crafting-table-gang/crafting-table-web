@@ -190,6 +190,7 @@ def logout():
     try:
         discord = OAuth2Session(client_id, token=session['discord_token'])
         discord.close()
+        return f'<h1>Logged out.</h1>'
     except Exception as e:
         print(e)
         return f'FAIL: {e}'
