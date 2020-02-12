@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/root/Eppyforce/
+WorkingDirectory=/srv/Eppyforce
 ExecStart=/usr/local/bin/uwsgi --ini ctbot-web.ini
 
 [Install]
