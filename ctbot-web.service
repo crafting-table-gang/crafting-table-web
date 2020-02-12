@@ -3,8 +3,8 @@ Description=uWSGI instance to serve ctbot web
 After=network.target
 
 [Service]
-User=root
-Group=root
+User=www-data
+Group=www-data
 WorkingDirectory=/root/Eppyforce/
 ExecStart=/usr/local/bin/uwsgi --ini ctbot-web.ini
 
