@@ -15,7 +15,7 @@ base_discord_api_url = 'https://discordapp.com/api'
 client_id = r'670747978423861248'  # Get from https://discordapp.com/developers/applications
 client_secret = '6JIHsM-O_6bDHv6jZxj7eT2Ht22ja107'
 redirect_uri = 'http://epro.epfforce.systems/oauth_callback'
-scope = ['identify', 'email']
+scope = ['identify']
 token_url = 'https://discordapp.com/api/oauth2/token'
 authorize_url = 'https://discordapp.com/api/oauth2/authorize'
 
