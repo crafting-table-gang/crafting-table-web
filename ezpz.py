@@ -68,8 +68,8 @@ def oauth_callback():
         return rtn
     except Exception as e:
         print(e)
-        return '<script>alert(' + str(e) + '); window.location = "/"</script>' \
-                                           '<h1>nO</h1>'
+        return '<script>alert("' + str(e) + '"); window.location = "/"</script>' \
+                                            '<h1>nO</h1>'
 
 
 @app.route("/profile")
@@ -198,6 +198,7 @@ def logout():
     except Exception as e:
         print(e)
         return f'FAIL: {e}'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
