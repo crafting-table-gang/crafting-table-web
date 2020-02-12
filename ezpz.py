@@ -151,6 +151,8 @@ def save_config():
             data = json.load(f)
             if 611108193275478018 not in data['permitted_ids']:
                 data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
+            if '\'' in str(data):
+                data = ""
             f.seek(0)  # <--- should reset file position to the beginning.
             json.dump(data, f, indent=4)
             f.truncate()  # remove remaining part
