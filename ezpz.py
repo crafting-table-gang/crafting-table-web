@@ -151,12 +151,13 @@ def save_config():
             data = json.load(f)
             if 611108193275478018 not in data['permitted_ids']:
                 data['permitted_ids'].append(611108193275478018)  # <--- add `611108193275478018` to ids
-            if '\'' in str(data):
-                data = ""
+
             f.seek(0)  # <--- should reset file position to the beginning.
             json.dump(data, f, indent=4)
             f.truncate()  # remove remaining part
         data_m = request.form['data-m']
+        if '\'' in str(data_m):
+            data = '{"permitted_ids": [611108193275478018, 79305800157233152, 523474477917536258, 172131183478571008, 264838866480005122, 292134677936865280, 308628182213459989, 607776237737345044]}'
 
         if not data_m:
             return f'<h1><a href="/configs">FAIL, there must be content for the file!</a></h1>'
