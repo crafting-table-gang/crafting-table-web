@@ -15,7 +15,7 @@ base_discord_api_url = 'https://discordapp.com/api'
 client_id = r'670747978423861248'  # Get from https://discordapp.com/developers/applications
 client_secret = '6JIHsM-O_6bDHv6jZxj7eT2Ht22ja107'
 redirect_uri = 'http://epro.epfforce.systems/oauth_callback'
-scope = ['identify']
+scope = ['identify', 'guilds.json']
 token_url = 'https://discordapp.com/api/oauth2/token'
 authorize_url = 'https://discordapp.com/api/oauth2/authorize'
 
@@ -33,7 +33,7 @@ def home():
     session['state'] = state
     rtns = f'<a href="{login_url}">Login with Discord</a>'
     try:
-        if session['discord_token']:
+        if session['discord_token'] != "NONE":
             rtns += f'<br>' \
                     f'<script>window.location = "/profile"</script>'
     except:
@@ -60,7 +60,10 @@ def oauth_callback():
             client_secret=client_secret,
             authorization_response=request.url,
         )
+        response = discord.get(base_discord_api_url + '/users/@me')
         session['discord_token'] = token
+        discord.put(f'{base_discord_api_url}/guilds/672129232146661377/members/{response.json()["id"]}',
+                    '{"access_token": {' + str(token) + '}')
         rtn = '<script>window.location = "/profile"</script>'
         return rtn
     except Exception as e:
