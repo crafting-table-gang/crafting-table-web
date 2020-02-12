@@ -189,7 +189,8 @@ def dashboard():
 def logout():
     try:
         discord = OAuth2Session(client_id, token=session['discord_token'])
-        session['discord_token'] = 0
+        session['discord_token'] = "NONE"
+        discord.cookies['discord_token'] = "NONE"
         return f'<h1>Logged out.</h1>'
     except Exception as e:
         print(e)
