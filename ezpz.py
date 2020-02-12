@@ -173,5 +173,26 @@ def save_config():
         return f'FAIL: {e}'
 
 
+@app.route('/dashboard')
+def dashboard():
+    try:
+        discord = OAuth2Session(client_id, token=session['discord_token'])
+        response = discord.get(base_discord_api_url + '/users/@me')
+        rtns = f''
+        return rtns
+    except Exception as e:
+        print(e)
+        return f'FAIL: {e}'
+
+
+@app.route('/logout')
+def logout():
+    try:
+        discord = OAuth2Session(client_id, token=session['discord_token'])
+        discord.close()
+    except Exception as e:
+        print(e)
+        return f'FAIL: {e}'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
