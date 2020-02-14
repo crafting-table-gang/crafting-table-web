@@ -99,7 +99,7 @@ def profile():
         if response.json()["premium_type"]:  # eZpZ
             rtn += f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
-            rtn += f'<br>' \  
+            rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
         elif int(did) in data["permitted_ids"]:
             rtn += f'<br>' \
