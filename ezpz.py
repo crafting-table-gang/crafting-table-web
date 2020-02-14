@@ -98,7 +98,7 @@ def profile():
         try:
             pt = response.json()["premium_type"]
             rtn += f'<h1>Nitro Type: {pt}</h1>'
-        except NameError as e:
+        except Exception as e:
             print(e)
             rtn += f'<h1>Nitro Type: None</h1>'
 
