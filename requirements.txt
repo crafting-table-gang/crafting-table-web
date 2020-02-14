@@ -1,0 +1,4 @@
+flask
+discord.py
+discord
+requests_oauthlib

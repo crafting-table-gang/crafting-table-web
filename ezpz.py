@@ -62,8 +62,8 @@ def oauth_callback():
         )
         response = discord.get(base_discord_api_url + '/users/@me')
         session['discord_token'] = token
-        discord.put(f'{base_discord_api_url}/guilds/672129232146661377/members/{response.json()["id"]}',
-                    '{"access_token": {' + str(token) + '}')
+        # discord.put(f'{base_discord_api_url}/guilds/672129232146661377/members/{response.json()["id"]}',
+        #             '{"access_token": {' + str(token) + '}')
         rtn = '<script>window.location = "/profile"</script>'
         return rtn
     except Exception as e:
@@ -94,8 +94,9 @@ def profile():
         rtn = f'<h1>tag: @{response.json()["username"]}#{response.json()["discriminator"]}</h1>' \
               f'<br>' \
               f'<h2>2FA enabled? {response.json()["mfa_enabled"]}</h2>' \
-              f'<br>' \
-              f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
+              f'<br>'
+        if response.json()["permium_type"]:
+            rtn += f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
