@@ -95,9 +95,12 @@ def profile():
               f'<br>' \
               f'<h2>2FA enabled? {response.json()["mfa_enabled"]}</h2>' \
               f'<br>'
-        print(response.json())
-        if response.json()["premium_type"]:  # eZpZ
+        try:
             rtn += f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
+        except NameError as e:
+            print(e)
+
+
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
