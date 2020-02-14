@@ -99,7 +99,6 @@ def profile():
             pt = response.json()["premium_type"]
             rtn += f'<h1>Nitro Type: {pt}</h1>'
         except Exception as e:
-            print(e)
             rtn += f'<h1>Nitro Type: None</h1>'
 
 
