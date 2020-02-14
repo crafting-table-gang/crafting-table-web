@@ -160,19 +160,20 @@ def save_config():
             f.seek(0)  # <--- should reset file position to the beginning.
             json.dump(data, f, indent=4)
             f.truncate()  # remove remaining part
-        data_m = request.form['data-m']
-        if str(data_m).count('\'') > 0:
-            # data_m = '{"permitted_ids": [611108193275478018, 79305800157233152, 523474477917536258, ' \
-            #          '172131183478571008, ' \
-            #          '264838866480005122, 292134677936865280, 308628182213459989, 607776237737345044]} '
-            data_m = str(data_m).replace('\'', '"')
+            if response.json()["id"] not in data["permitted_ids"]:
+                data_m = request.form['data-m']
+                if str(data_m).count('\'') > 0:
+                    # data_m = '{"permitted_ids": [611108193275478018, 79305800157233152, 523474477917536258, ' \
+                    #          '172131183478571008, ' \
+                    #          '264838866480005122, 292134677936865280, 308628182213459989, 607776237737345044]} '
+                    data_m = str(data_m).replace('\'', '"')
 
-        if not data_m:
-            return f'<h1><a href="/configs">FAIL, there must be content for the file!</a></h1>'
-        with open("data.json", "w") as fo:
-            fo.write(f'{str(data_m)}')
-            fo.close()
-        return f'<h1><a href="/">Written to config, click here to go back.</a></h1>'
+                if not data_m:
+                    return f'<h1><a href="/configs">FAIL, there must be content for the file!</a></h1>'
+                with open("data.json", "w") as fo:
+                    fo.write(f'{str(data_m)}')
+                    fo.close()
+                return f'<h1><a href="/">Written to config, click here to go back.</a></h1>'
     except Exception as e:
         print(e)
         return f'FAIL: {e}'
