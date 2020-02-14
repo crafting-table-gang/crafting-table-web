@@ -11,10 +11,10 @@ jobs:
     - name: SSH Commands
       uses: appleboy/ssh-action@v0.0.2
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: "epro.epfforce.systems"
+        username: root
         key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
+        port: 22
         script: |
           cd /srv/Eppyforce
           ./rnr.sh
