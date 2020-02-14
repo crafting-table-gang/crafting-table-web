@@ -95,7 +95,7 @@ def profile():
               f'<br>' \
               f'<h2>2FA enabled? {response.json()["mfa_enabled"]}</h2>' \
               f'<br>'
-        if response.json()["permium_type"]:
+        if response.json()["premium_type"]:
             rtn += f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
