@@ -96,7 +96,8 @@ def profile():
               f'<h2>2FA enabled? {response.json()["mfa_enabled"]}</h2>' \
               f'<br>'
         try:
-            rtn += f'<h1>Nitro Type: {response.json()["premium_type"]}</h1>'
+            pt = response.json()["premium_type"]
+            rtn += f'<h1>Nitro Type: {pt}</h1>'
         except NameError as e:
             print(e)
             rtn += f'<h1>Nitro Type: None</h1>'
