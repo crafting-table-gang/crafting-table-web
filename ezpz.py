@@ -108,6 +108,7 @@ def profile():
         elif int(did) in data["permitted_ids"]:
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
+        rtn += f'<br><h1><a href="/logout">LOGOUT</a></h1>'
         return rtn
     except Exception as e:
         print(e)
