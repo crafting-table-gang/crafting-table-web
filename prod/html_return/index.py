@@ -1,4 +1,8 @@
 def main():
+    """
+
+    :return:
+    """
     return """<!DOCTYPE html>
 <html>
 
