@@ -28,7 +28,7 @@ def dashboard(user=None, session=None):
     """
     if user is None or session is None:
         return f'<script>alert("Please log in for the dashboard!"); window.location = "/"</script>'
-    return prod.html_return.logged_in.dashboard.main()
+    return prod.html_return.logged_in.dashboard.main(user, session)
 
 
 def profile(user=None, session=None):
@@ -58,16 +58,32 @@ def bs_init():
 
 
 def jqur():
+    """
+
+    :return:
+    """
     return prod.html_return.assets.js.bs_init.main()
 
 
 def bs1():
+    """
+
+    :return:
+    """
     return prod.html_return.assets.bootstrap.js.bs1.main()
 
 
 def bs2():
+    """
+
+    :return:
+    """
     return prod.html_return.assets.bootstrap.css.bs2.main()
 
 
 def script():
+    """
+
+    :return:
+    """
     return prod.html_return.assets.js.script.main()

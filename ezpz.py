@@ -214,7 +214,7 @@ def dlog0():
 
 
 @app.route('/assets/js/bs-init.js')
-def scr():
+def bs_init():
     return m.bs_init()
 
 
@@ -231,6 +231,11 @@ def bs2():
 @app.route('/assets/js/jquery.min.js')
 def jqr():
     return m.jqur()
+
+
+@app.route('/assets/js/script.min.js')
+def script():
+    return m.script()
 
 
 if __name__ == '__main__':
