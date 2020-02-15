@@ -1,5 +1,7 @@
 from prod.html_return import rtrnr as m
-# to stop me from dying looking at code in the main file lmao
+# to stop me from dying looking at code in the main file lmao -tst
+
+
 
 def imports(app, session):  # normal (just a func to get the required vars!)
     @app.route('/assets/img/Discord-Logo+Wordmark-White.png')
