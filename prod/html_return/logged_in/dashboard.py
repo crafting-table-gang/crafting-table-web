@@ -81,4 +81,4 @@ def main(user, session):
             return rtns
     except Exception as e:
         print(e)
-        return f"<script>alert('Please Log In. (error:{str(e)})'); window.location = '/'</script>"
+        return f"<script>alert('Please Log In.)'); window.location = '/'</script>"
