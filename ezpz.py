@@ -213,7 +213,7 @@ def dlog0():
     return m.dlog0()
 
 
-@app.route('/assets/js/script.min.js')
+@app.route('/assets/js/bs-init.js')
 def scr():
     return m.scr()
 
