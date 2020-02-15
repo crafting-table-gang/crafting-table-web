@@ -2,7 +2,8 @@ import json
 
 from requests_oauthlib import OAuth2Session
 
-from ezpz import client_id, base_discord_api_url
+client_id = r'670747978423861248'
+base_discord_api_url = 'https://discordapp.com/api'
 
 with open('data.json', 'r+') as f:
     data = json.load(f)
