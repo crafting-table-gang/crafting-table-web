@@ -215,7 +215,7 @@ def dlog0():
 
 @app.route('/assets/js/bs-init.js')
 def scr():
-    return m.scr()
+    return m.bs_init()
 
 
 @app.route('/assets/bootstrap/js/bootstrap.min.js')
