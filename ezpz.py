@@ -218,5 +218,20 @@ def scr():
     return m.scr()
 
 
+@app.route('/assets/bootstrap/js/bootstrap.min.js')
+def bs1():
+    return m.bs1()
+
+
+@app.route('/assets/bootstrap/css/bootstrap.min.css')
+def bs2():
+    return m.bs2()
+
+
+@app.route('/assets/js/jquery.min.js')
+def jqr():
+    return m.jqur()
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
