@@ -8,12 +8,12 @@ import prod.html_return.logged_in.dashboard
 import prod.html_return.logged_in.profile
 
 
-def index():
+def index(url):
     """
 
     :return:
     """
-    return prod.html_return.index.main()
+    return prod.html_return.index.main(url)
 
 
 def dashboard():
