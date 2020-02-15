@@ -1,4 +1,10 @@
-import prod.html_return
+import prod.html_return.assets.img.disc_logo_0
+import prod.html_return.assets.js.script
+import prod.html_return.index
+import prod.html_return.logged_in.dashboard
+import prod.html_return.logged_in.profile
+
+
 def index():
     """
 
