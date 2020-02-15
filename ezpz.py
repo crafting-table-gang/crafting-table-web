@@ -33,7 +33,7 @@ def home():
     oauth = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
     login_url, state = oauth.authorization_url(authorize_url)
     session['state'] = state
-    rtns = m.index
+    rtns = m.index()
     try:
         if session['discord_token'] != "NONE":
             rtns += f'<br>' \
