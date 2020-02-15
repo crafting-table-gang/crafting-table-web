@@ -1,5 +1,7 @@
 import prod.html_return.assets.bootstrap.css.bs2
 import prod.html_return.assets.bootstrap.js.bs1
+import prod.html_return.assets.css.animate
+import prod.html_return.assets.css.style
 import prod.html_return.assets.img.disc_logo_0
 import prod.html_return.assets.js.bs_init
 import prod.html_return.assets.js.jqr
@@ -87,3 +89,19 @@ def script():
     :return:
     """
     return prod.html_return.assets.js.script.main()
+
+
+def animate():
+    """
+
+    :return:
+    """
+    return prod.html_return.assets.css.animate.main()
+
+
+def style():
+    """
+
+    :return:
+    """
+    return prod.html_return.assets.css.style.main()

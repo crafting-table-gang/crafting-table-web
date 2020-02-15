@@ -238,5 +238,10 @@ def script():
     return m.script()
 
 
+@app.route('/assets/css/animate.min.css')
+def animate_m_css():
+    return m.animate()
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
