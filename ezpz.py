@@ -184,16 +184,16 @@ def save_config():
         return f'FAIL: {e}'
 
 
-@app.route('/dashboard')
-def dashboard():
-    try:
-        discord = OAuth2Session(client_id, token=session['discord_token'])
-        response = discord.get(base_discord_api_url + '/users/@me')
-        rtns = m.dashboard
-        return rtns
-    except Exception as e:
-        print(e)
-        return f'FAIL: {e}'
+# @app.route('/dashboard')
+# def dashboard():
+#     try:
+#         discord = OAuth2Session(client_id, token=session['discord_token'])
+#         response = discord.get(base_discord_api_url + '/users/@me')
+#         rtns = m.dashboard
+#         return rtns
+#     except Exception as e:
+#         print(e)
+#         return f'FAIL: {e}'
 
 
 @app.route('/logout')
@@ -241,6 +241,17 @@ def script():
 @app.route('/assets/css/animate.min.css')
 def animate_m_css():
     return m.animate()
+
+
+@app.route('/assets/css/styles.min.css')
+def styles():
+    return m.style()
+
+
+@app.route('/dashboard')
+def dashboard():
+    user = ''
+    return m.dashboard(user, session)
 
 
 if __name__ == '__main__':
