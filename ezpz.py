@@ -12,11 +12,18 @@ from prod.html_return import rtrnr as m
 
 # Disable SSL requirement
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+with open('data.json', 'r+') as f:
+    dat = json.load(f)
+    if dat["client_sec"] == "nO":
+        dat["client_sec"] = "nO"  # <--- add `611108193275478018` to ids
+    f.seek(0)  # <--- should reset file position to the beginning.
+    json.dump(dat, f, indent=4)
+    f.truncate()  # remove remaining part
 
 # Settings for your app
 base_discord_api_url = 'https://discordapp.com/api'
 client_id = r'670747978423861248'  # Get from https://discordapp.com/developers/applications
-client_secret = 'nO'
+client_secret = dat["client_sec"]
 redirect_uri = 'https://epro.epfforce.systems/oauth_callback'
 scope = ['identify', 'guilds.join']
 token_url = 'https://discordapp.com/api/oauth2/token'
