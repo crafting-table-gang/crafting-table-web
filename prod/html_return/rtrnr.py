@@ -1,6 +1,4 @@
 import prod.html_return
-
-
 def index():
     """
 
