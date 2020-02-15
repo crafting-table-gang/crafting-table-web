@@ -20,7 +20,6 @@ def main(user, session):
         discord = OAuth2Session(client_id, token=session['discord_token'])
         response = discord.get(base_discord_api_url + '/users/@me')
         did = response.json()["id"]
-        user.id = did
         if int(did) in response.json()["permitted_ids"]:
             rtns = f"""
             <!DOCTYPE html>
