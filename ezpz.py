@@ -7,6 +7,8 @@ import os
 from flask import Flask, request, session
 from requests_oauthlib import OAuth2Session
 
+from prod.html_return import rtrnr as m
+
 # Disable SSL requirement
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -31,7 +33,7 @@ def home():
     oauth = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
     login_url, state = oauth.authorization_url(authorize_url)
     session['state'] = state
-    rtns = f'<a href="{login_url}">Login with Discord</a>'
+    rtns = m.index
     try:
         if session['discord_token'] != "NONE":
             rtns += f'<br>' \
@@ -100,7 +102,6 @@ def profile():
             rtn += f'<h1>Nitro Type: {pt}</h1>'
         except Exception as e:
             rtn += f'<h1>Nitro Type: None</h1>'
-
 
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
             rtn += f'<br>' \
@@ -188,7 +189,7 @@ def dashboard():
     try:
         discord = OAuth2Session(client_id, token=session['discord_token'])
         response = discord.get(base_discord_api_url + '/users/@me')
-        rtns = f''
+        rtns = m.dashboard
         return rtns
     except Exception as e:
         print(e)
@@ -205,6 +206,16 @@ def logout():
     except Exception as e:
         print(e)
         return f'FAIL: {e}'
+
+
+@app.route('/assets/img/Discord-Logo+Wordmark-White.png')
+def dlog0():
+    return m.dlog0()
+
+
+@app.route('/assets/js/script.min.js')
+def scr():
+    return m.scr()
 
 
 if __name__ == '__main__':
