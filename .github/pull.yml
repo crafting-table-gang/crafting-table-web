@@ -1,5 +1,5 @@
 version: "1"
 rules:
   - base: master
-    upstream: mouncg:master    # change `wei` to the owner of upstream repo ok...0
+    upstream: mouncg:master    # change `wei` to the owner of upstream repo ok...
     mergeMethod: hardreset
