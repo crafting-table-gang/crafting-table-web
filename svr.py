@@ -211,7 +211,7 @@ def logout():
         print(e)
         return f'FAIL: {e}'
 
-
+print(session)
 no_logic.imports(app, session)
 
 
