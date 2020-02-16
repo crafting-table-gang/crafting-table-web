@@ -1,4 +1,4 @@
-from ezpz import app
+from svr import app
 
 if __name__ == "__main__":
     app.run()

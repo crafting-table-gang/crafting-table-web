@@ -3,7 +3,7 @@ from prod.html_return import rtrnr as m
 
 
 
-def imports(app, session):  # normal (just a func to get the required vars!)
+def imports(app, session):
     @app.route('/assets/img/Discord-Logo+Wordmark-White.png')
     def dlog0():
         return m.dlog0()
