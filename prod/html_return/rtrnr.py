@@ -28,8 +28,6 @@ def dashboard(user=None, session=None):
 
     :return:
     """
-    if user is None or session is None:
-        return f'<script>alert("Please log in for the dashboard!"); window.location = "/"</script>'
     return prod.html_return.logged_in.dashboard.main(user, session)
 
 
