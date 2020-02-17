@@ -4,8 +4,10 @@ CTB oauth
 import json
 import os
 
+import sentry_sdk
 from flask import Flask, request, session
 from requests_oauthlib import OAuth2Session
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 import no_logic
 from prod.html_return import rtrnr as m
@@ -23,6 +25,12 @@ redirect_uri = 'https://epro.epfforce.systems/oauth_callback'
 scope = ['identify', 'guilds.join']
 token_url = 'https://discordapp.com/api/oauth2/token'
 authorize_url = 'https://discordapp.com/api/oauth2/authorize'
+sentry_dsn = dat["sentry_dsn"]
+
+sentry_sdk.init(
+    dsn=sentry_dsn,
+    integrations=[FlaskIntegration()]
+)
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
