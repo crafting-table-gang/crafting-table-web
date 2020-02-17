@@ -222,6 +222,9 @@ def logout():
 
 no_logic.imports(app, session)
 
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
 
 
 
