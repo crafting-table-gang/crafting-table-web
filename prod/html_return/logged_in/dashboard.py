@@ -16,12 +16,11 @@ cfg = data
 
 
 def main(user, session):
-    try:
-        discord = OAuth2Session(client_id, token=session['discord_token'])
-        response = discord.get(base_discord_api_url + '/users/@me')
-        did = response.json()["id"]
-        if int(did) in response.json()["permitted_ids"]:
-            rtns = f"""
+    discord = OAuth2Session(client_id, token=session['discord_token'])
+    response = discord.get(base_discord_api_url + '/users/@me')
+    did = response.json()["id"]
+    if int(did) in response.json()["permitted_ids"]:
+        rtns = f"""
             <!DOCTYPE html>
             <html>
     
@@ -49,9 +48,9 @@ def main(user, session):
     
                 </html>
             """
-            return rtns
-        else:
-            rtns = f"""
+        return rtns
+    else:
+        rtns = f"""
                 <!DOCTYPE html>
                 <html>
     
@@ -78,7 +77,4 @@ def main(user, session):
     
                 </html>
                 """
-            return rtns
-    except Exception as e:
-        print(e)
-        return f"<script>alert('Please Log In.'); window.location = '/'</script>"
+        return rtns
