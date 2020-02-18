@@ -43,4 +43,5 @@ def imports(app, session):
     def dashboard():
         user = ''
         session = get_ssn()
+        print(session)
         return m.dashboard(user, session)
