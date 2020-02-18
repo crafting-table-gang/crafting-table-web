@@ -37,7 +37,7 @@ def main(user,
     
             <body style="background-color: #23272A;color: #FFFF;">
                 <h1>Dashboard</h1>
-                <p>The official crafting table server: <a href="">{cfg['serverInvite']}<br></a><br><br>The support server:&nbsp;<a href="{cfg['supportServerInvite']}">{cfg['supportServerInvite']}<br></a><br><br>Invite me&nbsp;<a href="https://discordapp.com/oauth2/authorize?client_id={cfg['clientID']}&scope=bot&permissions=2147483647">HERE</a></p>
+                <p>The official crafting table server: <a href="{cfg['serverInvite']}">{cfg['serverInvite']}<br></a><br><br>The support server:&nbsp;<a href="{cfg['supportServerInvite']}">{cfg['supportServerInvite']}<br></a><br><br>Invite me&nbsp;<a href="https://discordapp.com/oauth2/authorize?client_id={cfg['clientID']}&scope=bot&permissions=2147483647">HERE</a></p>
                 <div class="btn-group"
                     role="group"><a class="btn btn-primary" role="button" href="/profile">Back to your profile</a></div>
                 <a class="btn btn-primary" role="button" href="/configs">Config Manager</a> 
