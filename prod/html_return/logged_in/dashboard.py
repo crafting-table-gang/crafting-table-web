@@ -16,7 +16,7 @@ cfg = data
 
 
 def main(user, session):
-    discord = OAuth2Session(client_id, token=session['discord_token'])
+    discord = OAuth2Session(client_id, token=session['session'])
     response = discord.get(base_discord_api_url + '/users/@me')
     did = response.json()["id"]
     if int(did) in response.json()["permitted_ids"]:
