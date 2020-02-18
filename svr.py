@@ -46,9 +46,10 @@ def home():
     session['state'] = state
     rtns = m.index(login_url)
     try:
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
         if session['discord_token'] != "NONE":
             rtns += f'<br>' \
-                    f'<script>window.location = "/profile"</script>'
+                    f'<script>window.location = "/profile"</script>' + lmn
     except:
         print("")
 
@@ -77,12 +78,14 @@ def oauth_callback():
         session['discord_token'] = token
         # discord.put(f'{base_discord_api_url}/guilds/672129232146661377/members/{response.json()["id"]}',
         #             '{"access_token": {' + str(token) + '}')
-        rtn = '<script>window.location = "/profile"</script>'
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+        rtn = '<script>window.location = "/profile"</script>' + lmn
         return rtn
     except KeyError as e:
         print(e)
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
         return '<script>alert("' + str(e) + '"); window.location = "/"</script>' \
-                                            f'<h1>FAIL: {str(e)}</h1>'
+                                            f'<h1>FAIL: {str(e)}</h1>' + lmn
 
 
 @app.route("/profile")
@@ -121,10 +124,12 @@ def profile():
             rtn += f'<br>' \
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
         rtn += f'<br><h1><a href="/logout">LOGOUT</a></h1>'
-        return rtn
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+        return rtn + lmn
     except KeyError as e:
         print(e)
-        return "<script>alert('Please Log In.'); window.location = '/'</script>"
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+        return "<script>alert('Please Log In.'); window.location = '/'</script>" + lmn
 
 
 # noinspection DuplicatedCode
@@ -146,8 +151,9 @@ def configs():
         response = discord.get(base_discord_api_url + '/users/@me')
         did = response.json()["id"]
         if int(did) not in [611108193275478018, 264838866480005122, 544911653058248734]:
+            lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
             return f'<script> alert("no."); window.location = "/profile"</script>' \
-                   f'<h1>nO</h1>'
+                   f'<h1>nO</h1>' + lmn
         # https://discordapp.com/developers/docs/resources/user#user-object-user-struct
         data = str(data)
         data = data.replace('\'', '"')
@@ -159,9 +165,11 @@ def configs():
               f'<br>' \
               f'<input type="submit" value="Submit">' \
               f'</form>'
-        return rtn
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+        return rtn + lmn
     except:
-        return "<script>alert('Please Log In.'); window.location = '/'</script>"
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+        return "<script>alert('Please Log In.'); window.location = '/'</script>" + lmn
 
 
 @app.route('/cfg-save', methods=['POST', 'GET'])
@@ -190,7 +198,8 @@ def save_config():
                 with open("data.json", "w") as fo:
                     fo.write(f'{str(data_m)}')
                     fo.close()
-                return f'<h1><a href="/">Written to config, click here to go back.</a></h1>'
+                lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+                return f'<h1><a href="/">Written to config, click here to go back.</a></h1>' + lmn
     except KeyError as e:
         print(e)
         return f'FAIL: {e}'
@@ -204,9 +213,11 @@ def logout():
         discord = OAuth2Session(client_id, token=session['discord_token'])
         session['discord_token'] = "NONE"
         discord.cookies['discord_token'] = "NONE"
-        return f'<h1>Logged out.</h1>'
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script"""
+        return f'<h1>Logged out.</h1>' + lmn
     except KeyError as e:
         print(e)
+        lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
         return f'FAIL: {e}'
 
 
