@@ -4,6 +4,9 @@ from prod.html_return import rtrnr as m
 
 
 def imports(app, session):
+    def get_ssn():
+        return session
+
     @app.route('/assets/img/Discord-Logo+Wordmark-White.png')
     def dlog0():
         return m.dlog0()
@@ -39,4 +42,5 @@ def imports(app, session):
     @app.route('/dashboard')
     def dashboard():
         user = ''
+        session = get_ssn()
         return m.dashboard(user, session)
