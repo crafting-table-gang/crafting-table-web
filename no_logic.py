@@ -7,6 +7,9 @@ def imports(app, session):
     def get_ssn():
         return session
 
+    def get_lmn():
+        return """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
+
     @app.route('/assets/img/Discord-Logo+Wordmark-White.png')
     def dlog0():
         return m.dlog0()
@@ -42,6 +45,7 @@ def imports(app, session):
     @app.route('/dashboard')
     def dashboard():
         user = ''
+        lmn = get_lmn()
         session = get_ssn()
-        print(session)
-        return m.dashboard(user, session)
+
+        return m.dashboard(user, session) + lmn

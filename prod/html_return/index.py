@@ -3,6 +3,7 @@ def main(url):
 
     :return:
     """
+    lmn = """<script src="https://browser.sentry-cdn.com/5.12.1/bundle.min.js" integrity="sha384-y+an4eARFKvjzOivf/Z7JtMJhaN6b+lLQ5oFbBbUwZNNVir39cYtkjW1r6Xjbxg3" crossorigin="anonymous"></script><script>Sentry.init({ dsn: 'https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837' });</script>"""
     return f"""
 <!DOCTYPE html>
 <html>
@@ -28,4 +29,4 @@ def main(url):
 </body>
 
 </html>
-"""
+""" + lmn
