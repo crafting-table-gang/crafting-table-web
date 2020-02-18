@@ -16,6 +16,4 @@ wsgi_app = SentryWsgiMiddleware(app.run)
 # if __name__ == "__main__":
 # app.run()
 # wsgi_app = SentryWsgiMiddleware(app)
-ep = 1 / 0
-print(ep)
 # this is just an entrypoint to allow WDGI to access the flask part of the server.
