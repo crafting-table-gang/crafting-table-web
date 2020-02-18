@@ -79,10 +79,10 @@ def oauth_callback():
         #             '{"access_token": {' + str(token) + '}')
         rtn = '<script>window.location = "/profile"</script>'
         return rtn
-    except Exception as e:
+    except KeyError as e:
         print(e)
         return '<script>alert("' + str(e) + '"); window.location = "/"</script>' \
-                                            '<h1>nO</h1>'
+                                            f'<h1>FAIL: {str(e)}</h1>'
 
 
 @app.route("/profile")
@@ -111,7 +111,7 @@ def profile():
         try:
             pt = response.json()["premium_type"]
             rtn += f'<h1>Nitro Type: {pt}</h1>'
-        except Exception as e:
+        except KeyError as e:
             rtn += f'<h1>Nitro Type: None</h1>'
 
         if int(did) in [611108193275478018, 264838866480005122, 544911653058248734]:
@@ -122,7 +122,7 @@ def profile():
                    f'<h1><a href="/configs">You have permission to manage configs, you may here!</a></h1>'
         rtn += f'<br><h1><a href="/logout">LOGOUT</a></h1>'
         return rtn
-    except Exception as e:
+    except KeyError as e:
         print(e)
         return "<script>alert('Please Log In.'); window.location = '/'</script>"
 
@@ -191,21 +191,11 @@ def save_config():
                     fo.write(f'{str(data_m)}')
                     fo.close()
                 return f'<h1><a href="/">Written to config, click here to go back.</a></h1>'
-    except Exception as e:
+    except KeyError as e:
         print(e)
         return f'FAIL: {e}'
 
 
-# @app.route('/dashboard')
-# def dashboard():
-#     try:
-#         discord = OAuth2Session(client_id, token=session['discord_token'])
-#         response = discord.get(base_discord_api_url + '/users/@me')
-#         rtns = m.dashboard
-#         return rtns
-#     except Exception as e:
-#         print(e)
-#         return f'FAIL: {e}'
 
 
 @app.route('/logout')
@@ -215,7 +205,7 @@ def logout():
         session['discord_token'] = "NONE"
         discord.cookies['discord_token'] = "NONE"
         return f'<h1>Logged out.</h1>'
-    except Exception as e:
+    except KeyError as e:
         print(e)
         return f'FAIL: {e}'
 
