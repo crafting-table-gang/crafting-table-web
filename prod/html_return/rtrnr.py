@@ -62,7 +62,7 @@ def jqur():
 
     :return:
     """
-    return prod.html_return.assets.js.bs_init.main()
+    return prod.html_return.assets.js.jqr.main()
 
 
 def bs1():
