@@ -15,7 +15,8 @@ with open('data.json', 'r+') as f:
 cfg = data
 
 
-def main(user, session):
+def main(user,
+         session):  # the error on this is  here -> https://sentry.io/share/issue/7e637371867f49a48dfceb93a6b83e69/
     discord = OAuth2Session(client_id, token=session['session'])
     response = discord.get(base_discord_api_url + '/users/@me')
     did = response.json()["id"]
