@@ -16,7 +16,12 @@ from prod.html_return import rtrnr as m
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 with open('data.json') as f:
     dat = json.load(f)
+sentry_dsn = dat["sentry_dsn"]
 
+sentry_sdk.init(
+    dsn=sentry_dsn,
+    integrations=[FlaskIntegration()]
+)
 # Settings for your app
 base_discord_api_url = 'https://discordapp.com/api'
 client_id = r'670747978423861248'  # Get from https://discordapp.com/developers/applications
@@ -25,12 +30,7 @@ redirect_uri = 'https://epro.epfforce.systems/oauth_callback'
 scope = ['identify', 'guilds.join']
 token_url = 'https://discordapp.com/api/oauth2/token'
 authorize_url = 'https://discordapp.com/api/oauth2/authorize'
-sentry_dsn = dat["sentry_dsn"]
 
-sentry_sdk.init(
-    dsn=sentry_dsn,
-    integrations=[FlaskIntegration()]
-)
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
