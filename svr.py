@@ -26,7 +26,7 @@ sentry_sdk.init(
 base_discord_api_url = 'https://discordapp.com/api'
 client_id = r'670747978423861248'  # Get from https://discordapp.com/developers/applications
 client_secret = dat["client_sec"]
-redirect_uri = 'https://web.bot.craftingtable.xyz'
+redirect_uri = 'https://web.bot.craftingtable.xyz/oauth_callback'
 scope = ['identify', 'guilds.join']
 token_url = 'https://discordapp.com/api/oauth2/token'
 authorize_url = 'https://discordapp.com/api/oauth2/authorize'
