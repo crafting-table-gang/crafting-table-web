@@ -9,8 +9,6 @@ with open('data.json') as f:
     dat = json.load(f)
 sentry_sdk.init(dsn=dat["sentry_dsn"])
 
-sentry_sdk.init(dsn="https://cc66efd98ae3494790ac9689940f77e7@sentry.io/2635837")
-
 wsgi_app = SentryWsgiMiddleware(app.run)
 
 # if __name__ == "__main__":
